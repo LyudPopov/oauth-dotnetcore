@@ -62,17 +62,7 @@ namespace OAuth
         /// <returns></returns>
         public static string GetNonce()
         {
-            const string chars = (Lower + Digit);
-
-            var nonce = new char[16];
-            lock (_randomLock)
-            {
-                for (var i = 0; i < nonce.Length; i++)
-                {
-                    nonce[i] = chars[_random.Next(0, chars.Length)];
-                }
-            }
-            return new string(nonce);
+            return Guid.NewGuid().ToString();
         }
 
         /// <summary>
